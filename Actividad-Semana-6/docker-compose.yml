@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  rabbitmq1:
+    image: "rabbitmq:3-management"
+    hostname: "rabbitmq1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "joseph"
+      RABBITMQ_DEFAULT_PASS: "1192948"
+      RABBITMQ_NODENAME: "rabbit@rabbitmq1"
+    ports:
+      - "5673:5672" # Cambiar a 5673 o a otro puerto libre en el host
+      - "15673:15672" # Cambiado de 15672 a 15673 para evitar conflictos
+    volumes:
+      - "./data1:/var/lib/rabbitmq"
+      - "./log1:/var/log/rabbitmq"
+    networks:
+      - mynetwork
+
+  rabbitmq2:
+    image: "rabbitmq:3-management"
+    hostname: "rabbitmq2"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "joseph"
+      RABBITMQ_DEFAULT_PASS: "1192948"
+      RABBITMQ_NODENAME: "rabbit@rabbitmq2"
+    volumes:
+      - "./data2:/var/lib/rabbitmq"
+      - "./log2:/var/log/rabbitmq"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

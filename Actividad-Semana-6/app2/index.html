@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>App 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #007B9E;
+        }
+    </style>
+    <script>
+        function consumeMessage() {
+            fetch('/consume').then(response => response.text()).then(data => {
+                alert("Mensaje consumido: " + data);
+            });
+        }
+
+        function deleteMessages() {
+            fetch('/delete').then(response => response.text()).then(data => {
+                alert("Mensajes eliminados");
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Aplicación 2 - RabbitMQ</h2>
+    <button onclick="consumeMessage()">Consumir Mensaje</button>
+    <button onclick="deleteMessages()">Eliminar Mensajes</button>
+</body>
+</html>

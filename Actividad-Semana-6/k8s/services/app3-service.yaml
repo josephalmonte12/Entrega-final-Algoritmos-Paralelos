@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app3-service
+  namespace: actividad-semana-6
+spec:
+  selector:
+    app: app3
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8083
+  type: LoadBalancer

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>App 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            background-color: #614caf;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: rgb(55, 54, 136)
+        }
+    </style>
+    <script>
+        function guardarMensaje() {
+            fetch('/guardar').then(response => response.text()).then(data => {
+                alert(data);
+            });
+        }
+
+        function enviarMensaje() {
+            fetch('/enviar').then(response => response.text()).then(data => {
+                alert(data);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Aplicación 3 - RabbitMQ y SQL Server</h2>
+    <button onclick="guardarMensaje()">Guardar Mensaje en BD</button>
+    <button onclick="enviarMensaje()">Enviar Mensaje a App 1</button>
+</body>
+</html>
